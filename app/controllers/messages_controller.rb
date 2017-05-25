@@ -3,9 +3,11 @@ class MessagesController < ApplicationController
 		message = Message.new(message_params)
 		message.user = current_user
 		if message.save
-			ActionCable.server.broadcast 'messages',
-				message: message.content,
-				user: message.user.name
+			# Broadcasting message immediately after it was created and saved to db
+			ActionCable.server.broadcast 'messages',	
+				# messages: name of channel we broadcasting to
+				message: message.content,	# content of message
+				user: message.user.name		# author of message
 			head :ok
 		end
 	end
