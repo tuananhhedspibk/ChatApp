@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ChatApp</title>
+		<%= action_cable_meta_tag %>
+		<%= render "layouts/rails_default" %>
+	</head>
+	<body>
+		<%= render partial: 'layouts/navbar' %>
+		<div class="container">
+			<%= yield %>
+		</div>
+	</body>
+</html>
